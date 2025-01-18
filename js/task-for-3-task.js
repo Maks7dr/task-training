@@ -49,7 +49,7 @@ console.log(factorials(5));
 // ? Створи функцію, яка обчислює площу круга за заданим радіусом.
 
 function areaСircle(radiuce) {
-  return 3.14 * radiuce ** 2;
+  return Math.PI * radiuce ** 2;
 }
 console.log(areaСircle(3));
 
@@ -57,20 +57,12 @@ console.log(areaСircle(3));
 // ? Напиши функцію, яка приймає два рядки і перевіряє, чи є один з них анаграмою іншого.
 
 function auditStr(firstStr, secondStr) {
-  let auditTotal = 0;
-  for (const item of firstStr) {
-    if (secondStr.includes(item)) {
-      auditTotal += 1;
-    }
-  }
-  if (auditTotal === secondStr.length) {
-    return true;
-  } else {
-    return false;
-  }
+  const sortedFirst = firstStr.split('').sort().join('');
+  const sortedSecond = secondStr.split('').sort().join('');
+  return sortedFirst === sortedSecond;
 }
 
-console.log(auditStr('qwert', 'tqwrea'));
+console.log(auditStr('qwert', 'tqwre'));
 
 // ? Завдання 4.6
 // ? Визнач, чи є всі числа у масиві [2, 4, 6, 8] парними.
