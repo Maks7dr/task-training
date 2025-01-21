@@ -46,3 +46,85 @@ function object1(user2) {
 }
 
 console.log(object1(user2));
+
+// ? Завдання 5. Масив об'єктів
+// ? Створи масив об'єктів products, де кожен об'єкт містить name і price. Напиши функцію, яка повертає масив назв усіх продуктів.
+
+const products = [
+  { name: 'Audi', price: 25000 },
+  { name: 'BMW', price: 30000 },
+  { name: 'Mazda', price: 15000 },
+];
+
+function nameCar(products) {
+  const nameCars = [];
+  for (let product of products) {
+    nameCars.push(product.name);
+  }
+  return nameCars;
+}
+
+console.log(nameCar(products));
+
+// ? Завдання 6. Звернення до властивостей у методах
+// ? Додай до об'єкта user метод updateAge(newAge), який змінює значення властивості age.
+
+const user3 = {
+  name: 'Maks',
+  age: 35,
+  updateAge(newAge) {
+    this.age = newAge;
+    return this.age;
+  },
+};
+
+console.log(user3.updateAge(36));
+
+// ? Завдання 7. Синтаксис spread і rest
+// ? Напиши функцію mergeObjects(obj1, obj2), яка об'єднує два об'єкти в один, використовуючи spread.
+
+function mergeObjects(obj1, obj2) {
+  const newObj = { ...obj1, ...obj2 };
+  return newObj;
+}
+
+console.log(mergeObjects({ a: 1, b: 2 }, { c: 3, g: 5 }));
+
+// ? Завдання 8. Копіювання об'єкта
+// ? Створи функцію cloneObject(obj), яка повертає точну копію переданого об'єкта.
+
+function cloneObject(obj) {
+  const copyOfObj = { ...obj };
+  return copyOfObj;
+}
+
+console.log(cloneObject({ f: 7, s: 5 }));
+
+// ? Завдання 9. Видалення властивості
+// ? Напиши функцію deleteProperty(obj, key), яка видаляє властивість з об'єкта за переданим ключем.
+
+function deleteProperty(obj, key) {
+  if (obj.hasOwnProperty(key)) {
+    delete obj[key];
+    return true;
+  } else {
+    return false;
+    // delete obj[key];
+    // return obj;
+  }
+}
+
+// function deleteProperty(obj, key) {
+//   return obj.hasOwnProperty(key) ? delete obj[key] : false;
+// }
+console.log(deleteProperty({ d: 7, c: 5, y: 89 }, 'c'));
+
+// ? Завдання 10. Обчислювані властивості
+// ? Створи функцію createObject(key, value), яка повертає об'єкт із однією властивістю, ім'я якої — значення змінної key, а значення — value.
+
+function createObject(key, value) {
+  const oneObj = { [key]: value };
+  return oneObj;
+}
+
+console.log(createObject('model', 'Zaporozhets'));
