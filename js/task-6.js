@@ -24,13 +24,16 @@ document
     // Итеративный расчет цены продажи
     let sellingPrice = costPrice / (1 - profitMargin); // Стартовая цена продажи
     let calculatedProfit = 0;
+    let kaspiDeliveryCost = 0;
+    let kaspiCommissionValue = 0;
+    let incomeTaxValue = 0;
 
     while (true) {
       // Вычисляем налоги и комиссии от текущей цены продажи
-      const kaspiDeliveryCost =
+      kaspiDeliveryCost =
         sellingPrice <= 5000 ? 0 : sellingPrice <= 15000 ? 799 : 1299;
-      const kaspiCommissionValue = sellingPrice * kaspiCommission;
-      const incomeTaxValue = sellingPrice * incomeTax;
+      kaspiCommissionValue = sellingPrice * kaspiCommission;
+      incomeTaxValue = sellingPrice * incomeTax;
 
       // Чистая прибыль
       calculatedProfit =
@@ -53,8 +56,22 @@ document
       'costPrice'
     ).textContent = `Себестоимость товара: ${costPrice.toFixed(2)} тг.`;
     document.getElementById(
-      'sellingPrice'
-    ).textContent = `Цена продажи для 30% прибыли: ${sellingPrice.toFixed(
+      'kaspiCommission'
+    ).textContent = `Комиссия Kaspi: ${kaspiCommissionValue.toFixed(2)} тг.`;
+    document.getElementById(
+      'kaspiDelivery'
+    ).textContent = `Стоимость доставки Kaspi: ${kaspiDeliveryCost.toFixed(
       2
     )} тг.`;
+    document.getElementById(
+      'incomeTax'
+    ).textContent = `Подоходный налог (3%): ${incomeTaxValue.toFixed(2)} тг.`;
+    document.getElementById(
+      'profit'
+    ).textContent = `Чистая прибыль (30% от продажи): ${calculatedProfit.toFixed(
+      2
+    )} тг.`;
+    document.getElementById(
+      'sellingPrice'
+    ).textContent = `Итоговая цена продажи: ${sellingPrice.toFixed(2)} тг.`;
   });
